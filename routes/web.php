@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\UnfollowsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,10 @@ Route::get('/dashboard', [UsersController::class, 'index'])
     ->name('dashboard');
 
 Route::get('/follows/{user}', [FollowsController::class, '__invoke'])
+    ->middleware(['auth', 'verified'])
+    ->name('follows');
+
+Route::get('/unfollows/{user}', [UnfollowsController::class, '__invoke'])
     ->middleware(['auth', 'verified'])
     ->name('follows');
 
