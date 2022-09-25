@@ -12,7 +12,8 @@ use Overtrue\LaravelFollow\Traits\Follower;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Follower, Followable;
+    use HasApiTokens, HasFactory, Notifiable;
+    use Follower, Followable;
 
     protected $fillable = [
         'name',
